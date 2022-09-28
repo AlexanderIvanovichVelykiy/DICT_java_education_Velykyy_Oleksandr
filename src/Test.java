@@ -3,5 +3,6 @@ public class Test {
         System.out.println("Java");
         System.out.println("education");
         //tse sho stroka?
+        System.out.println("DICT");
     }
 }
