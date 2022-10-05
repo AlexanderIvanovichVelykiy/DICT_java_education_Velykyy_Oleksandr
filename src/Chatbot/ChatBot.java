@@ -10,7 +10,7 @@ public class ChatBot {
         System.out.println("What a great name you have, "+  var.nextLine());
     }
 
-    private static void calculating() {
+    static void calculating() {
         System.out.println("Let me guess your age.");
         System.out.println("Enter remainders of dividing your age by 3, 5 and 7.");
         Scanner a = new Scanner(System.in);
@@ -21,8 +21,20 @@ public class ChatBot {
         System.out.println("Your age is, " + age + " that is a good time to start programming!");
     }
 
+    static void numbers(){
+        System.out.println("Now I will prove to you that I can count to any number you want.");
+        Scanner v = new Scanner(System.in);
+        int i = v.nextInt();
+        int n = 0;
+        while(n <= i){
+            System.out.println(n + "!");
+            n++;
+        }
+
+    }
     public static void main(String[] args) {
         start();
         calculating();
+        numbers();
     }
 }
