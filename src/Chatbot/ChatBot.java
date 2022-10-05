@@ -32,9 +32,23 @@ public class ChatBot {
         }
 
     }
+    static void test() {
+        System.out.println("How many programming languages exist at the time this bot was created?");
+        System.out.println("1. 52 \n2. 87 \n3. 253 \n4. 1000+");
+        Scanner ans = new Scanner(System.in);
+        int answer = ans.nextInt();
+        if (answer == 3){
+            System.out.println("You god damn right!");
+        }
+        else {
+            System.out.println("try again!");
+            test();
+        }
+    }
     public static void main(String[] args) {
         start();
         calculating();
         numbers();
+        test();
     }
 }
