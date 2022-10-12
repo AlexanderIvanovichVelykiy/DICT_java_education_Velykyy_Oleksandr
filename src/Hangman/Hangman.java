@@ -4,8 +4,14 @@ import java.util.Scanner;
 
 public class Hangman {
     static void anonce(){
-        System.out.println("Hangman");
-        System.out.println("The game will available soon");
+        Scanner answer = new Scanner(System.in);
+        String enter = answer.nextLine();
+        if (Objects.equals(enter, "Java")){
+            System.out.println("You survive!");
+        }
+        else {
+            System.out.println("You lost!");
+        }
     }
     public static void main(String[] args) {
         anonce();
