@@ -9,7 +9,7 @@ public class Hangman {
     private int guessCount, chanceLeft;
 
     public Hangman() {
-        
+
         guessCount = 0;
         chanceLeft = 8;
         secretWord = getWord();
@@ -20,6 +20,7 @@ public class Hangman {
     }
 
     public void makeGuess(char c) {
+
         char a, b;
         a = b = c;
         a -= 32;
@@ -68,6 +69,7 @@ public class Hangman {
     }
 
 
+
     public static void main(String[] args) {
         
         Hangman a1 = new Hangman();
@@ -80,10 +82,18 @@ public class Hangman {
             while (!a1.isFound()) {
                 System.out.println(a1.getDisguisedWord());
                 System.out.print("Please enter a character" + '\n');
-                a1.makeGuess(key.next().charAt(0));
+                a1.makeGuess(key.nextLine().charAt(0));
+                System.out.println("Please repeat what your enter");
+                String str = key.nextLine();
+                int a = str.length();
+                if(a > 1){
+                    System.out.println("Enter only one letter");
+                    continue;
+                }
                 System.out.println(a1.getDisguisedWord());
                 System.out.println("Guess count: " + a1.getGuessCount());
                 System.out.println("Chances left: " + a1.getChanceLeft());
+
                 if (a1.getChanceLeft() == 0) {
                     System.out.println("You lost!");
                     System.out.println("The secret word was: " + a1.getSecretWord());
