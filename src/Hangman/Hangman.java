@@ -2,18 +2,20 @@ package Hangman;
 import java.util.Scanner;
 import java.util.Random;
 
+
 public class Hangman {
     private String secretWord;
     private char[] disguisedWord;
     private int guessCount, chanceLeft;
 
     public Hangman() {
+        
         guessCount = 0;
         chanceLeft = 8;
         secretWord = getWord();
         disguisedWord = secretWord.toCharArray();
         for (int i = 0; i < secretWord.length(); i++)
-            if (secretWord.charAt(i) == ' ') disguisedWord[i] = ' ';
+            if (secretWord.charAt(i) == ' ');
             else disguisedWord[i] = '-';
     }
 
@@ -28,8 +30,13 @@ public class Hangman {
             if (c == secretWord.charAt(i) || b == secretWord.charAt(i) || a == secretWord.charAt(i))
                 disguisedWord[i] = secretWord.charAt(i);
 
-        String y = new String(disguisedWord);    //After changing
-        if (x.equals(y)) chanceLeft--;    //If before is similar to after
+            String y = new String(disguisedWord);
+            if (x.equals(y)) {
+                chanceLeft--;
+                System.out.println("You guessed this letter or letter not in word\n" +
+                        "Or you using not latin alphabet)");
+            }
+
     }
 
     public String getSecretWord() {
@@ -49,8 +56,7 @@ public class Hangman {
     }
 
     public boolean isFound() {
-        for (int i = 0; i < disguisedWord.length; i++)
-            if (disguisedWord[i] == '-') return false;
+        for (char c : disguisedWord) if (c == '-') return false;
         return true;
     }
 
@@ -63,7 +69,7 @@ public class Hangman {
 
 
     public static void main(String[] args) {
-
+        
         Hangman a1 = new Hangman();
         System.out.println("""
                 Welcome to a game of Hangman!
@@ -71,20 +77,22 @@ public class Hangman {
                 """ + '\n');
         Scanner key = new Scanner(System.in);
 
-        while (!a1.isFound()) {
-            System.out.println(a1.getDisguisedWord());
-            System.out.print("Please enter a character" + '\n');
-            a1.makeGuess(key.next().charAt(0));
-            System.out.println(a1.getDisguisedWord());
-            System.out.println("Guess count: " + a1.getGuessCount());
-            System.out.println("Chances left: " + a1.getChanceLeft());
-            if (a1.getChanceLeft() == 0) {
-                System.out.println("You lost!");
-                System.out.println("The secret word was: " + a1.getSecretWord());
-                break;
+            while (!a1.isFound()) {
+                System.out.println(a1.getDisguisedWord());
+                System.out.print("Please enter a character" + '\n');
+                a1.makeGuess(key.next().charAt(0));
+                System.out.println(a1.getDisguisedWord());
+                System.out.println("Guess count: " + a1.getGuessCount());
+                System.out.println("Chances left: " + a1.getChanceLeft());
+                if (a1.getChanceLeft() == 0) {
+                    System.out.println("You lost!");
+                    System.out.println("The secret word was: " + a1.getSecretWord());
+                    break;
+                }
+                if (a1.isFound()) {
+                    System.out.println("You survive!");
+                }
+
             }
-            if (a1.isFound()) System.out.println("You survive!");
-        }
-        key.close();
     }
 }
