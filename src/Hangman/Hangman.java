@@ -8,7 +8,7 @@ public class Hangman {
     private char[] disguisedWord;
     private int guessCount, chanceLeft;
 
-    public Hangman() {
+    public  Hangman() {
 
         guessCount = 0;
         chanceLeft = 8;
@@ -20,7 +20,7 @@ public class Hangman {
     }
 
     public void makeGuess(char c) {
-
+    //Спс индусу из США за этот lower case
         char a, b;
         a = b = c;
         a -= 32;
@@ -61,23 +61,27 @@ public class Hangman {
         return true;
     }
 
-    public String getWord() {
+    public  String getWord() {
         Random rand = new Random();
         String[] wordList = {"Python", "Java", "JavaScript", "Kotlin"};
         int r = rand.nextInt(wordList.length);
         return wordList[r];
     }
-
-
-
     public static void main(String[] args) {
-        
-        Hangman a1 = new Hangman();
-        System.out.println("""
+        Scanner start = new Scanner(System.in);
+        while(true){
+            System.out.println("Do you wanna start game?\nIf you wanna exit press 1 or press any any another number to start.");
+            int stop = start.nextInt();
+            if (stop == 1){
+                break;
+            }
+            System.out.println(stop);
+            Hangman a1 = new Hangman();
+            System.out.println("""
                 Welcome to a game of Hangman!
                 The game will available soon!
                 """ + '\n');
-        Scanner key = new Scanner(System.in);
+            Scanner key = new Scanner(System.in);
 
             while (!a1.isFound()) {
                 System.out.println(a1.getDisguisedWord());
@@ -86,7 +90,7 @@ public class Hangman {
                 System.out.println("Please repeat what your enter");
                 String str = key.nextLine();
                 int a = str.length();
-                if(a > 1){
+                if (a > 1) {
                     System.out.println("Enter only one letter");
                     continue;
                 }
@@ -101,8 +105,11 @@ public class Hangman {
                 }
                 if (a1.isFound()) {
                     System.out.println("You survive!");
-                }
 
+                }
             }
+
+        }
     }
 }
+
